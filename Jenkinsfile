@@ -27,5 +27,15 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to the kubernetes cluster'){
+            steps{
+                script{
+                // i am telling jenkins to read the yaml file from my github project -> in the configs: ''
+                    //kubernetesDeploy configs: 'deploymentservice.yaml', kubeConfig: [path: ''], kubeconfigId: 'k8sconfigpwd', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+                    // we only need this
+                    kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
+                }
+            }
+        }
     }
 }
