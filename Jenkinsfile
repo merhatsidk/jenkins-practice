@@ -23,7 +23,7 @@ pipeline {
                    
                     withCredentials([string(credentialsId: 'my-latest-docker-pwd', variable: 'docker-pwd')]) {
                             // some block
-                        sh "docker login -u tsidk29 -p '${docker-pwd}'"
+                        sh "docker login -u tsidk29 -p ${docker-pwd}"
                         sh "docker push tsidk29/devops-integeration2"
                 }
                     
