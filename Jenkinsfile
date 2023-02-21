@@ -20,10 +20,14 @@ pipeline {
         stage('Push to docker hub'){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u tsidk29 -p ${dockerhubpwd}'
-                    }
-                    sh 'docker push tsidk29/devops-integeration'
+                   
+                    withCredentials([string(credentialsId: 'dockerHub-password', variable: 'dockerHub-password-new')]) {
+                            // some block
+                        sh 'docker login -u tsidk29 -p ${dockerHub-password-new}'
+                        sh 'docker push tsidk29/devops-integeration'
+                }
+                    
+                    //sh 'docker push tsidk29/devops-integeration'
                 }
             }
         }
