@@ -13,7 +13,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t tsidk29/devops-integeration .'
+                    sh 'docker build -t tsidk29/devops-integeration2 .'
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'dockerHub-password', variable: 'dockerHub-password-new')]) {
                             // some block
                         sh 'docker login -u tsidk29 -p ${dockerHub-password-new}'
-                        sh 'docker push tsidk29/devops-integeration'
+                        sh 'docker push tsidk29/devops-integeration2'
                 }
                     
                     //sh 'docker push tsidk29/devops-integeration'
